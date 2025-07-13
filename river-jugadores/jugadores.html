@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plantel actual | River Plate</title>
+  <link rel="stylesheet" href="public/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Plantel actual</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="jugadores.html">Plantel actual</a>
+      <a href="#">Jugadores a préstamo</a>
+      <a href="#">Jugadores Históricos</a>
+    </nav>
+  </header>
+
+  <main id="plantel">
+    <h2>Jugadores 2025</h2>
+
+    <!-- Filtros -->
+    <form id="filtros" class="filtros">
+      <input type="hidden" name="nombre" value="" />
+      <label for="posicion">Filtrar por posición:</label>
+      <select name="pos" id="posicion">
+        <option value="">— Todas —</option>
+        <option value="ARQ">Arquero</option>
+        <option value="DEF">Defensor</option>
+        <option value="MED">Mediocampista</option>
+        <option value="DEL">Delantero</option>
+      </select>
+    </form>
+
+    <!-- Ordenamiento -->
+    <div id="orden-container">
+      <label for="orden">Ordenar por:</label>
+      <select id="orden">
+        <option value="nombre">Nombre</option>
+        <option value="edad">Edad</option>
+        <option value="goles">Goles</option>
+      </select>
+    </div>
+
+    <!-- Lista generada -->
+    <ul id="lista-jugadores"></ul>
+  </main>
+
+  <footer>
+    Hecho por Carmela Gonzalez Andres
+  </footer>
+
+  <!-- Script único para filtros y orden -->
+<script>
+  const normalize = (str) =>
+    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+  const lista         = document.getElementById("lista-jugadores");
+  const selectPos     = document.getElementById("posicion");
+  const selectOrden   = document.getElementById("orden");
+  const inputNombre   = document.querySelector('#filtros input[name="nombre"]');
+  const params        = new URLSearchParams(window.location.search);
+  let filtroNombre    = normalize((params.get("nombre") || "").trim());
+  let filtroPos       = selectPos.value.toUpperCase();
+  let criterioOrden   = selectOrden.value;
+  let dataOriginal    = [];
+
+  // Prellenar filtro si vino por URL
+  inputNombre.value = params.get("nombre") || "";
+
+  // Eventos filtros y orden
+  selectPos.addEventListener("change", () => {
+    filtroPos = selectPos.value.toUpperCase();
+    aplicarFiltrosYOrden();
+  });
+
+  selectOrden.addEventListener("change", () => {
+    criterioOrden = selectOrden.value;
+    aplicarFiltrosYOrden();
+  });
+
+  inputNombre.addEventListener("keyup", (e) => {
+    filtroNombre = normalize(e.target.value.trim());
+    aplicarFiltrosYOrden();
+  });
+
+  // Cargar JSON de jugadores
+  fetch("data/jugadores.json")
+    .then(res => res.json())
+    .then(data => {
+      dataOriginal = data;
+      aplicarFiltrosYOrden();
+    });
+
+  // Función para mostrar lista filtrada y ordenada
+  function aplicarFiltrosYOrden() {
+    let jugadores = dataOriginal.filter(j => {
+      const nombreOK = !filtroNombre || normalize(j.nombre).includes(filtroNombre);
+      const posOK    = !filtroPos || j.posicion.toUpperCase() === filtroPos;
+      return nombreOK && posOK;
+    });
+
+    jugadores.sort((a, b) => {
+      if (criterioOrden === "nombre") return a.nombre.localeCompare(b.nombre);
+      if (criterioOrden === "edad")   return a.edad - b.edad;
+      if (criterioOrden === "goles")  return b.goles - a.goles;
+      return 0;
+    });
+
+    lista.innerHTML = "";
+
+    if (jugadores.length === 0) {
+      lista.innerHTML = "<p style='grid-column:1/-1;font-style:italic'>No se encontraron jugadores.</p>";
+      return;
+    }
+
+    jugadores.forEach(j => {
+      const li = document.createElement("li");
+      li.classList.add("jugador", "fade-in");
+      li.innerHTML = `
+        <img src="${j.foto}" alt="${j.nombre}" />
+        <h3>${j.nombre}</h3>
+        <p><strong>Posición:</strong> ${j.posicion}</p>
+        <p><strong>Edad:</strong> ${j.edad}</p>
+        <p><strong>Partidos:</strong> ${j.partidos}</p>
+        <p><strong>Goles:</strong> ${j.goles}</p>
+      `;
+
+      // Abrir modal con info detallada al clickear
+      li.addEventListener("click", () => abrirModal(j));
+
+      lista.appendChild(li);
+    });
+  }
+
+  // Función para abrir el modal y mostrar datos detallados
+  function abrirModal(jugador) {
+    document.getElementById("modal-foto").src = jugador.foto;
+    document.getElementById("modal-foto").alt = jugador.nombre;
+    document.getElementById("modal-nombre").textContent = jugador.nombre;
+    document.getElementById("modal-posicion").textContent = jugador.posicion;
+    document.getElementById("modal-edad").textContent = jugador.edad;
+    document.getElementById("modal-partidos").textContent = jugador.partidos;
+    document.getElementById("modal-goles").textContent = jugador.goles;
+
+    // Biografía (si existe)
+    document.getElementById("modal-biografia").textContent = jugador.biografia || "No disponible.";
+
+    // Clubes (si existen)
+    document.getElementById("modal-clubes").textContent = jugador.clubes ? jugador.clubes.join(", ") : "No disponible.";
+
+    // Redes sociales
+    const redesCont = document.getElementById("modal-redes");
+    redesCont.innerHTML = "";
+    if (jugador.redes) {
+      for (const [red, url] of Object.entries(jugador.redes)) {
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = red.charAt(0).toUpperCase() + red.slice(1);
+        a.style.marginRight = "10px";
+        redesCont.appendChild(a);
+      }
+    } else {
+      redesCont.textContent = "No disponible.";
+    }
+
+    // Videos (iframe)
+    const videosCont = document.getElementById("modal-videos");
+    videosCont.innerHTML = "";
+    if (jugador.videos && jugador.videos.length > 0) {
+      jugador.videos.forEach(url => {
+        const iframe = document.createElement("iframe");
+        iframe.src = url;
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        videosCont.appendChild(iframe);
+      });
+    }
+
+    // Mostrar modal
+    document.getElementById("modal-jugador").style.display = "flex";
+  }
+
+  // Función para cerrar modal
+  function cerrarModal() {
+    document.getElementById("modal-jugador").style.display = "none";
+  }
+
+  // Evento para cerrar modal cuando clickeás en la cruz
+  document.getElementById("modal-close").addEventListener("click", cerrarModal);
+
+  // Cerrar modal si clickeás fuera del contenido
+  document.getElementById("modal-jugador").addEventListener("click", e => {
+    if (e.target === e.currentTarget) cerrarModal();
+  });
+</script>
+
+  <div id="modal-jugador" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="modal-close" class="modal-close">&times;</span>
+    <img id="modal-foto" src="" alt="" />
+    <h2 id="modal-nombre"></h2>
+    <p><strong>Posición:</strong> <span id="modal-posicion"></span></p>
+    <p><strong>Edad:</strong> <span id="modal-edad"></span></p>
+    <p><strong>Partidos:</strong> <span id="modal-partidos"></span></p>
+    <p><strong>Goles:</strong> <span id="modal-goles"></span></p>
+    <p><strong>Biografía:</strong> <span id="modal-biografia"></span></p>
+    <p><strong>Clubes:</strong> <span id="modal-clubes"></span></p>
+    <p><strong>Redes Sociales:</strong> <span id="modal-redes"></span></p>
+    <div id="modal-videos"></div>
+  </div>
+</div>
+
+</body>
+</html>

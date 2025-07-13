@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "nombre": "Franco Armani",
+    "edad": 37,
+    "posicion": "ARQ",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 341,
+    "foto": "public/fotos/armani.png",
+    "biografia": "Franco Armani es un arquero argentino conocido por su paso por River Plate y la selección nacional...",
+  "clubes": ["Atlético Nacional", "River Plate"],
+  "redes": {
+    "twitter": "https://twitter.com/francoarmani",
+    "instagram": "https://instagram.com/francoarmani"
+  },
+  "videos": [
+    "https://www.youtube.com/embed/VIDEO_ID1",
+    "https://www.youtube.com/embed/VIDEO_ID2"
+  ]
+  },
+  {
+    "id": 2,
+    "nombre": "Jeremías Ledesma",
+    "edad": 32,
+    "posicion": "ARQ",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 5,
+    "foto": "public/fotos/ledesma.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Lucas Lavagnino",
+    "edad": 20,
+    "posicion": "ARQ",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 0,
+    "foto": "public/fotos/lavagnino.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Santiago Beltrán",
+    "edad": 20,
+    "posicion": "ARQ",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 0,
+    "foto": "public/fotos/beltran.png"
+  },
+  {
+    "id": 5,
+    "nombre": "Paulo Diaz",
+    "edad": 30,
+    "posicion": "DEF",
+    "nacionalidad": "Chilena",
+    "goles": 13,
+    "partidos": 201,
+    "foto": "public/fotos/paulo.png"
+  },
+  {
+    "id": 6,
+    "nombre": "Sebastián Boselli",
+    "edad": 21,
+    "posicion": "DEF",
+    "nacionalidad": "Uruguaya",
+    "goles": 1,
+    "partidos": 14,
+    "foto": "public/fotos/boselli.png"
+  },
+  {
+    "id": 14,
+    "nombre": "Lucas Martinez Quarta",
+    "edad": 29,
+    "posicion": "DEF",
+    "nacionalidad": "Argentina",
+    "goles": 7,
+    "partidos": 126,
+    "foto": "public/fotos/martinezquarta.png"
+  },
+  {
+    "id": 7,
+    "nombre": "Germán Pezzella",
+    "edad": 34,
+    "posicion": "DEF",
+    "nacionalidad": "Argentina",
+    "goles": 6,
+    "partidos": 107,
+    "foto": "public/fotos/pezzella.png"
+  },
+  {
+    "id": 9,
+    "nombre": "Lautaro Rivero",
+    "edad": 21,
+    "posicion": "DEF",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 0,
+    "foto": "public/fotos/rivero.png"
+  },
+  {
+    "id": 10,
+    "nombre": "Gonzalo Montiel",
+    "edad": 28,
+    "posicion": "DEF",
+    "nacionalidad": "Argentina",
+    "goles": 7,
+    "partidos": 160,
+    "foto": "public/fotos/montiel.png"
+  },
+  {
+    "id": 11,
+    "nombre": "Fabricio Bustos",
+    "edad": 29,
+    "posicion": "DEF",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 35,
+    "foto": "public/fotos/bustos.png"
+  },
+  {
+    "id": 12,
+    "nombre": "Milton Casco",
+    "edad": 37,
+    "posicion": "DEF",
+    "nacionalidad": "Argentina",
+    "goles": 5,
+    "partidos": 307,
+    "foto": "public/fotos/casco.png"
+  },
+  {
+    "id": 13,
+    "nombre": "Marcos Acuña",
+    "edad": 33,
+    "posicion": "DEF",
+    "nacionalidad": "Argentina",
+    "goles": 1,
+    "partidos": 36,
+    "foto": "public/fotos/acuña.png"
+  },
+  {
+    "id": 15,
+    "nombre": "Maximiliano Meza",
+    "edad": 32,
+    "posicion": "MED",
+    "nacionalidad": "Argentina",
+    "goles": 6,
+    "partidos": 39,
+    "foto": "public/fotos/meza.png"
+  },
+  {
+    "id": 16,
+    "nombre": "Kevin Castaño",
+    "edad": 24,
+    "posicion": "MED",
+    "nacionalidad": "Colombiana",
+    "goles": 0,
+    "partidos": 16,
+    "foto": "public/fotos/castaño.png"
+  },
+  {
+    "id": 17,
+    "nombre": "Enzo Peréz",
+    "edad": 39,
+    "posicion": "MED",
+    "nacionalidad": "Argentina",
+    "goles": 6,
+    "partidos": 266,
+    "foto": "public/fotos/enzo.png"
+  },
+  {
+    "id": 18,
+    "nombre": "Giuliano Galoppo",
+    "edad": 26,
+    "posicion": "MED",
+    "nacionalidad": "Argentina",
+    "goles": 1,
+    "partidos": 15,
+    "foto": "public/fotos/galoppo.png"
+  },
+  {
+    "id": 19,
+    "nombre": "Gonzalo Martinez",
+    "edad": 32,
+    "posicion": "MED",
+    "nacionalidad": "Argentina",
+    "goles": 37,
+    "partidos": 189,
+    "foto": "public/fotos/pity.png"
+  },
+  {
+    "id": 20,
+    "nombre": "Ignacio Fernández",
+    "edad": 35,
+    "posicion": "MED",
+    "nacionalidad": "Argentina",
+    "goles": 41,
+    "partidos": 299,
+    "foto": "public/fotos/nacho.png"
+  },
+  {
+    "id": 21,
+    "nombre": "Santiago Lencina",
+    "edad": 19,
+    "posicion": "MED",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 3,
+    "foto": "public/fotos/lencina.png"
+  },
+  {
+    "id": 22,
+    "nombre": "Agustín De La Cuesta",
+    "edad": 19,
+    "posicion": "MED",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 0,
+    "foto": "public/fotos/delacuesta.png"
+  },
+  {
+    "id": 23,
+    "nombre": "Giorgio Costantini",
+    "edad": 19,
+    "posicion": "MED",
+    "nacionalidad": "Argentina-Brasilera",
+    "goles": 0,
+    "partidos": 2,
+    "foto": "public/fotos/costantini.png"
+  },
+  {
+    "id": 24,
+    "nombre": "Facundo Colidio",
+    "edad": 25,
+    "posicion": "DEL",
+    "nacionalidad": "Argentina",
+    "goles": 25,
+    "partidos": 92,
+    "foto": "public/fotos/colidio.png"
+  },
+  {
+    "id": 25,
+    "nombre": "Ian Subiabre",
+    "edad": 18,
+    "posicion": "DEL",
+    "nacionalidad": "Argentina",
+    "goles": 1,
+    "partidos": 16,
+    "foto": "public/fotos/subiabre.png"
+  },
+  {
+    "id": 26,
+    "nombre": "Sebastián Driussi",
+    "edad": 29,
+    "posicion": "DEL",
+    "nacionalidad": "Argentina",
+    "goles": 35,
+    "partidos": 128,
+    "foto": "public/fotos/driussi.png"
+  },
+  {
+    "id": 27,
+    "nombre": "Miguel Borja",
+    "edad": 32,
+    "posicion": "DEL",
+    "nacionalidad": "Colombiana",
+    "goles": 60,
+    "partidos": 138,
+    "foto": "public/fotos/borja.png"
+  },
+  {
+    "id": 28,
+    "nombre": "Maximiliano Salas",
+    "edad": 27,
+    "posicion": "DEL",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 0,
+    "foto": "public/fotos/salas.png"
+  },
+  {
+    "id": 29,
+    "nombre": "Agustín Ruberto",
+    "edad": 19,
+    "posicion": "DEL",
+    "nacionalidad": "Argentina",
+    "goles": 2,
+    "partidos": 17,
+    "foto": "public/fotos/ruberto.png"
+  },
+  {
+    "id": 30,
+    "nombre": "Bautista Dadín",
+    "edad": 19,
+    "posicion": "DEL",
+    "nacionalidad": "Argentina",
+    "goles": 0,
+    "partidos": 0,
+    "foto": "public/fotos/dadin.png"
+  }
+]
